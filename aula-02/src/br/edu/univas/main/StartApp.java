@@ -9,6 +9,12 @@ public class StartApp {
 	public static void main(String[] args) {
 		Scanner leitura = new Scanner(System.in);
 
+		System.out.println("Por favor, digite seu primeiro nome:");
+		String nome = leitura.nextLine();
+		System.out.println("Por favor, digite seu sobrenome:");
+		String sobreNome = leitura.nextLine();
+		imprimeOla(nome, sobreNome);
+		
 		imprimeMenu();
 		
 		int opcao = leitura.nextInt();
@@ -21,11 +27,11 @@ public class StartApp {
 		
 		if (opcao == 1) {
 			c = soma(a, b);
-		} else if (opcao == 2) {			
+		} else if (opcao == 2) {
 			c = subtracao(a, b);
 		}
 		
-		System.out.println("O resultado é: " + c);
+		imprimeResultado(c);
 		
 		leitura.close();
 	} // fim do metodo main
@@ -45,6 +51,14 @@ public class StartApp {
 	
 	public static int subtracao(int x, int y) {
 		return x - y;
+	}
+	
+	public static void imprimeResultado(int resultado) {
+		System.out.println("O resultado é: " + resultado);
+	}
+	
+	public static void imprimeOla(String nome, String sobreNome) {
+		System.out.println("Seja bem-vindo " + nome + " " + sobreNome);
 	}
 
 }
