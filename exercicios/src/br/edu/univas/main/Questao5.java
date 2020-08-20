@@ -34,35 +34,35 @@ public class Questao5 {
 	 * @param ano integer that represents a year 
 	 * @return String the next day in the format: dd/MM/YYYY
 	 */
-	public static String calculaDiaSeguinte(int dia, int mes, int ano) {
+	public static void calculaDiaSeguinte(int dia, int mes, int ano) {
 		dia++;
 		
-		boolean mesDe31Dias = mesTem31Dias(mes);
-		boolean mesDe30Dias = mesTem30Dias(mes);
-		
-		if (mesDe31Dias && dia == 32) {
+		if (alteraDataParaMes31(dia, mes) ||
+			alteraDataParaMes30(dia, mes) ||
+			alteraDataParaMesFevereiro(dia, ano)) {
 			dia = 1;
 			mes++;
+			
 			if (mes == 13) {
 				mes = 1;
 				ano++;
-			}
-			
-		} else if (mesDe30Dias && dia == 31) {
-			dia = 1;
-			mes++;
-			
-		} else {
-			boolean isAnoBissexto = verificaAnoBissexto(ano);
-			if ((dia == 29 && !isAnoBissexto) || dia == 30) {
-				dia = 1;
-				mes++;
-			}
+			}			
 		}
 		
 		String result = dia + "/" + mes + "/" + ano;
 		System.out.println(result);
-		return result;
+	}
+	
+	public static boolean alteraDataParaMes31(int dia, int mes) {
+		return mesTem31Dias(mes) && dia == 32;
+	}
+	
+	public static boolean alteraDataParaMes30(int dia, int mes) {
+		return mesTem30Dias(mes) && dia == 31;
+	}
+	
+	public static boolean alteraDataParaMesFevereiro(int dia, int ano) {
+		return (dia == 29 && !verificaAnoBissexto(ano)) || dia == 30;
 	}
 	
 	public static boolean verificaAnoBissexto(int ano) {
