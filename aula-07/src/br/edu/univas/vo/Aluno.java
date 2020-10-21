@@ -1,4 +1,4 @@
-package br.edu.univas.main;
+package br.edu.univas.vo;
 
 public class Aluno {
 
