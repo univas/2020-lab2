@@ -18,6 +18,7 @@ public class StartApp {
 		
 		for (int i = 0; i < quantidade; i++) {
 			Carro carro = new Carro();
+			
 			System.out.println("\n\nInforme os dados do carro");
 			System.out.println("Informe o modelo:");
 			carro.modelo = leitura.nextLine();
