@@ -2,7 +2,7 @@ package br.edu.univas.main;
 
 import br.edu.univas.vo.Peca;
 
-public class Questao19 {
+public class Questao20 {
 
 	public static void main(String[] args) {	
 		Peca peca1 = new Peca();
@@ -14,7 +14,7 @@ public class Questao19 {
 		Peca peca3 = new Peca();
 		peca3.nome = "Peça 3";
 		
-		Peca[] vetor1 = new Peca[3];
+		Peca[] vetor1 = new Peca[6];
 		vetor1[0] = peca1;
 		vetor1[1] = peca2;
 		vetor1[2] = peca3;
@@ -39,9 +39,9 @@ public class Questao19 {
 		System.out.println("\n\n");
 		imprimeVetor(vetor2);
 		
-		copiarVetor(vetor1, vetor2);
 		
-		vetor1[2].nome = "Peça 77";
+		concatenar(vetor1, vetor2);
+		
 		
 		System.out.println("\nDEPOIS::\n");
 		imprimeVetor(vetor1);
@@ -49,21 +49,18 @@ public class Questao19 {
 		imprimeVetor(vetor2);
 	}
 	
-	public static void copiarVetor(Peca[] destino, Peca[] origem) {
-		for (int i = 0; i < destino.length; i++) {
-			//cópia de referencia:
-			//destino[i] = origem[i];
-			
-			//criando um novo registro
-			Peca peca = new Peca();
-			peca.nome = origem[i].nome;
-			destino[i] = peca;
+	public static void concatenar(Peca[] destino, Peca[] origem) {
+		for (int i = 0; i < origem.length; i++) {
+			destino[i + 3] = origem[i];
 		}
 	}
 	
+	
 	public static void imprimeVetor(Peca[] pecas) {
 		for (int i = 0; i < pecas.length; i++) {
-			System.out.println(pecas[i].nome);
+			if (pecas[i] != null) {
+				System.out.println(pecas[i].nome);
+			}
 		}
 	}
 	
